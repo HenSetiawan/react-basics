@@ -1,0 +1,71 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.navbar {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  box-shadow: 2px 1px 4px black;
+}
+
+.notes-form {
+  margin-top: 20px;
+  display: inline-block;
+  width: 100%;
+  padding: 10px;
+}
+
+.input-form {
+  width: 60%;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.input-form > input,
+.input-form > textarea,
+.input-form > button {
+  width: 100% !important;
+  padding: 12px;
+}
+
+.notes-container {
+  width: 60%;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.notes-list {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.note-item {
+  border: 1px solid black;
+  padding: 12px;
+  margin-top: 10px;
+  width: 48%;
+}
+
+.note-item button {
+  padding: 4px;
+  margin-top: 5px;
+  margin-right: 5px;
+}
+
+.note-item p {
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.input-error {
+  font-size: 12px;
+  margin-top: 6px;
+  color:red;
+  font-style: italic;
+}
