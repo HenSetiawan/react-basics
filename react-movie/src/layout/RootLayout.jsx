@@ -22,7 +22,7 @@ function RootLayout() {
       {" "}
       <Navbar
         style={{
-          backgroundColor: isScroll ? `black` : '',
+          backgroundColor: isScroll ? `black` : "",
         }}
         expand="lg"
         className="navbar-light fixed-top"
@@ -70,6 +70,9 @@ function RootLayout() {
       <main>
         <Outlet />
       </main>
+      <footer className="footer">
+        <p>2023 ReactMovie. All Rights Reserved. Designed by Hendy Setiawan</p>
+      </footer>
     </>
   );
 }

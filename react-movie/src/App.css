@@ -144,3 +144,14 @@ body {
   right: 0;
   width: 28px;
 }
+
+.footer {
+  background: #16162e;
+  width: 100%;
+  display: flex;
+  height: 60px;
+  color: #abb7c4;
+  font-size: 14px;
+  justify-content: center;
+  align-items: center;
+}
