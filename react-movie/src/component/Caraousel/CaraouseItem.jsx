@@ -1,8 +1,11 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 function CaraouseItem({ title, type, description, image }) {
   return (
     <div
-      style={{ backgroundImage: `url('${image}')` }}
+      style={{
+        backgroundImage: `url(https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/${image})`,
+      }}
       className="movie-main"
       role="presentation"
     >
