@@ -7,6 +7,7 @@ import RootLayout from "./layout/RootLayout";
 
 //pages
 import Home from "./pages/Home";
+import Trending from "./pages/Trending";
 
 // loader
 import { homePageLoader } from "./pages/Home";
@@ -19,7 +20,11 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader:homePageLoader
+        loader: homePageLoader,
+      },
+      {
+        path: "/trending",
+        element: <Trending />,
       },
     ],
   },

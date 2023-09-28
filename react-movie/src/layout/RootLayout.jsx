@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-key */
 import { useState, useEffect } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, NavLink, useLocation } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -10,19 +11,33 @@ import { RiMovie2Fill } from "react-icons/ri";
 import { PiTelevisionBold } from "react-icons/pi";
 
 function RootLayout() {
-  const [isScroll, setIsScroll] = useState(false);
+  const [isNavBlack, setIsNavBlack] = useState(true);
+  const location = useLocation();
 
-    useEffect(() => {
-      window.addEventListener("scroll", () => {
-        window.scrollY >= 50 ? setIsScroll(true) : setIsScroll(false);
-      });
-    }, []);
+  useEffect(() => {
+    if (location.pathname === "/") {
+      setIsNavBlack(false);
+    } else {
+      setIsNavBlack(true);
+    }
+    window.addEventListener("scroll", () => {
+      if (location.pathname == "/") {
+        if (window.scrollY >= 50) {
+          setIsNavBlack(true);
+        } else {
+          setIsNavBlack(false);
+        }
+      } else {
+        setIsNavBlack(true);
+      }
+    });
+  }, [location]);
   return (
     <>
       {" "}
       <Navbar
         style={{
-          backgroundColor: isScroll ? `black` : "",
+          backgroundColor: isNavBlack ? `black` : "rgba(0, 0, 0, 0.3)",
         }}
         expand="lg"
         className="navbar-light fixed-top"
@@ -39,18 +54,18 @@ function RootLayout() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto p-2">
-              <Nav.Link className="text-uppercase text-nav" href="#home">
+              <NavLink className="text-nav text-uppercase me-2" to="/">
                 <div className="d-flex align-items-center">
                   <AiFillHome />
                   <span className="ms-1">Home</span>
                 </div>
-              </Nav.Link>
-              <Nav.Link className="text-uppercase text-nav" href="#link">
+              </NavLink>
+              <NavLink className="text-nav text-uppercase" to="/trending">
                 <div className="d-flex align-items-center">
                   <AiFillFire />
                   <span className="ms-1">Trending</span>
                 </div>
-              </Nav.Link>
+              </NavLink>
               <Nav.Link className="text-uppercase text-nav" href="#link">
                 <div className="d-flex align-items-center">
                   <RiMovie2Fill />

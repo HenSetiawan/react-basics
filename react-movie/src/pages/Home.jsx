@@ -9,9 +9,18 @@ function Home() {
   return (
     <div>
       <CaraouselList moviesData={homePageData.trendingMovies} />
-      <MovieList moviesData={homePageData.moviesOnAir} title="Movies on Air" />
-      <MovieList moviesData={homePageData.seriesOnAir} title="Series on Air" />
-      <MovieList moviesData={homePageData.topRated} title="Top Rated" />
+      <MovieList
+        moviesData={homePageData.moviesOnAir.results.slice(0, 6)}
+        title="Movies on Air"
+      />
+      <MovieList
+        moviesData={homePageData.seriesOnAir.results.slice(0, 6)}
+        title="Series on Air"
+      />
+      <MovieList
+        moviesData={homePageData.topRated.results.slice(0, 6)}
+        title="Top Rated"
+      />
     </div>
   );
 }
