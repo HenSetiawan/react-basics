@@ -60,18 +60,18 @@ function RootLayout() {
                   <span className="ms-1">Home</span>
                 </div>
               </NavLink>
-              <NavLink className="text-nav text-uppercase" to="/trending">
+              <NavLink className="text-nav text-uppercase me-2" to="/trending">
                 <div className="d-flex align-items-center">
                   <AiFillFire />
                   <span className="ms-1">Trending</span>
                 </div>
               </NavLink>
-              <Nav.Link className="text-uppercase text-nav" href="#link">
+              <NavLink className="text-nav text-uppercase me-2" to="/movies">
                 <div className="d-flex align-items-center">
                   <RiMovie2Fill />
                   <span className="ms-1">Movies</span>
                 </div>
-              </Nav.Link>
+              </NavLink>
               <Nav.Link className="text-uppercase text-nav" href="#link">
                 <div className="d-flex align-items-center">
                   <PiTelevisionBold />

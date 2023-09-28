@@ -147,7 +147,7 @@ body {
   width: 28px;
 }
 
-.trending-container {
+.trending-container, .movies-container {
   margin-top: 80px !important;
 }
 
@@ -186,6 +186,15 @@ body {
 
 .pagination-page {
   font-weight: 700;
+}
+
+.dropdown-menu.show {
+  display: flex !important;
+  flex-wrap: wrap;
+}
+
+.dropdown-item {
+  width: 15% !important;
 }
 
 .footer {

@@ -4,7 +4,7 @@ import MovieItem from "./MovieItem";
 
 function MovieList({ title, moviesData, isViewMoreDdisplay = true }) {
   return (
-    <Container className="mt-5 mb-5">
+    <Container className="mt-3 mb-5">
       <div className="title-list d-flex justify-content-space-between">
         <h6 className="text-uppercase">{title}</h6>
         {isViewMoreDdisplay ? <a href="">View More &gt;</a> : " "}
@@ -17,6 +17,7 @@ function MovieList({ title, moviesData, isViewMoreDdisplay = true }) {
                 title={movie.original_title || movie.name}
                 rate={movie.vote_average}
                 image={movie.poster_path}
+                releaseDate={movie.release_date.slice(0,4)}
               />
             </Col>
           );
