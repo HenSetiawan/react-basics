@@ -11,7 +11,7 @@ function NotesForm({ handleAddNote }) {
           <h3>Buat Catatan Anda</h3>
         </div>
         <div className="input-form">
-          <p>sisa karakter judul: {50 - parseInt(title.length)}</p>
+          <p>sisa karakter judul: {50 - parseInt(title.length,10)}</p>
         </div>
         <div className="input-form">
           <input
