@@ -1,4 +1,5 @@
 import { useLoaderData, useParams } from "react-router-dom";
+import data from "../../data/db";
 function DetailCareer() {
   const career = useLoaderData();
   const { id } = useParams();
@@ -31,9 +32,8 @@ export default DetailCareer;
 
 export const detailCareerLoader = async ({ params }) => {
   try {
-    const response = await fetch(`http://localhost:3000/careers/${params.id}`);
-    const result = await response.json();
-    return result;
+    const dataFinded = data.careers.find((career) => career.id == params.id);
+    return dataFinded;
   } catch (error) {
     console.log(error);
   }

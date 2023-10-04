@@ -19,7 +19,6 @@ function Trending() {
 
       const trendingMovies = await responseTrending.json();
       setListPaginatedTrendingMovies(trendingMovies);
-      console.log(trendingMovies);
     } catch (error) {
       return error;
     }

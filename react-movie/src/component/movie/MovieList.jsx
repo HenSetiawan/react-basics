@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { Row, Col, Container } from "react-bootstrap";
 import MovieItem from "./MovieItem";
@@ -17,7 +18,11 @@ function MovieList({ title, moviesData, isViewMoreDdisplay = true }) {
                 title={movie.original_title || movie.name}
                 rate={movie.vote_average}
                 image={movie.poster_path}
-                releaseDate={movie.release_date.slice(0,4)}
+                releaseDate={
+                  movie.release_date !== undefined
+                    ? movie.release_date.slice(0, 4)
+                    : movie.first_air_date.slice(0, 4)
+                }
               />
             </Col>
           );

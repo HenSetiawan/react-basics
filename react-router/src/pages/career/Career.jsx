@@ -1,4 +1,5 @@
 import { useLoaderData, Link } from "react-router-dom";
+import data from "../../data/db";
 
 function Career() {
   const careers = useLoaderData();
@@ -34,9 +35,7 @@ export default Career;
 
 export const careerLoader = async () => {
   try {
-    const response = await fetch("http://localhost:3000/careers");
-    const result = await response.json();
-    return result;
+    return data.careers;
   } catch (error) {
     console.log(error);
   }

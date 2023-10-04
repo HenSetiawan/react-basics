@@ -1,39 +1,25 @@
-/* eslint-disable no-unused-vars */
 import { useState, useEffect } from "react";
 import MovieList from "../component/movie/MovieList";
-import { Dropdown, Container, Button, Form, InputGroup } from "react-bootstrap";
+import { Dropdown, Container } from "react-bootstrap";
 import ReactPaginate from "react-paginate";
 import { useSearchParams, Link } from "react-router-dom";
-function Movies() {
+function Series() {
   const apiKey = import.meta.env.VITE_API_KEY;
   const apiUrl = import.meta.env.VITE_BASE_URL;
-  const [listMovies, setListMovies] = useState({});
+  const [listSeries, setListSeries] = useState({});
   const [page, setPage] = useState(1);
   const [listGenre, setListGenre] = useState({});
-  const [searchQuery, setSearchQuery] = useState("");
 
   const [searchParams] = useSearchParams();
 
-  const handleReqMovies = async (page, genre) => {
+  const handleReqSeries = async (page, genre) => {
     try {
       const responseMovies = await fetch(
-        `${apiUrl}/discover/movie?api_key=${apiKey}&page=${page}&language=en-US&sort_by=popularity.desc&with_genres=${genre}`
+        `${apiUrl}/discover/tv?api_key=${apiKey}&page=${page}&language=en-US&sort_by=popularity.desc&with_genres=${genre}`
       );
 
       const movies = await responseMovies.json();
-      setListMovies(movies);
-    } catch (error) {
-      return error;
-    }
-  };
-
-  const handleSearch = async (keyword) => {
-    try {
-      const responseSearch = await fetch(
-        `${apiUrl}/search/movie?api_key=${apiKey}&query=${keyword}&page=1`
-      );
-      const searchResults = await responseSearch.json();
-      setListMovies(searchResults);
+      setListSeries(movies);
     } catch (error) {
       return error;
     }
@@ -42,7 +28,7 @@ function Movies() {
   const handleReqGenre = async () => {
     try {
       const response = await fetch(
-        `${apiUrl}/genre/movie/list?api_key=${apiKey}&language=en-US`
+        `${apiUrl}/genre/tv/list?api_key=${apiKey}&language=en-US`
       );
       const genre = await response.json();
       setListGenre(genre);
@@ -65,15 +51,15 @@ function Movies() {
       (genre) => genre.name === genreParams
     );
     if (genreId !== undefined && genreId[0] !== undefined) {
-      handleReqMovies(page, genreId[0].id);
+      handleReqSeries(page, genreId[0].id);
     } else {
-      handleReqMovies(page, "");
+      handleReqSeries(page, "");
     }
   }, [searchParams, page, listGenre]);
 
   return (
     <div className="movies-container">
-      <Container className="d-flex justify-content-between">
+      <Container>
         <Dropdown>
           <Dropdown.Toggle variant="light" id="dropdown-basic">
             Filter By
@@ -82,7 +68,7 @@ function Movies() {
           <Dropdown.Menu>
             {listGenre.genres?.map((genre) => (
               <Link
-                to={`/movies?genre=${genre.name}`}
+                to={`/series?genre=${genre.name}`}
                 className="dropdown-item"
                 key={genre.id}
               >
@@ -91,25 +77,12 @@ function Movies() {
             ))}
           </Dropdown.Menu>
         </Dropdown>
-        <InputGroup className="mb-3 input-search">
-          <Form.Control
-            onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="input keyword..."
-          />
-          <Button
-            onClick={() => handleSearch(searchQuery)}
-            variant="outline-secondary"
-            id="button-search"
-          >
-            Search
-          </Button>
-        </InputGroup>
       </Container>
-      {listMovies.results ? (
+      {listSeries.results ? (
         <MovieList
           isViewMoreDdisplay={false}
-          moviesData={listMovies.results}
-          title="List Movies"
+          moviesData={listSeries.results}
+          title="List Series"
         />
       ) : (
         ""
@@ -131,4 +104,4 @@ function Movies() {
   );
 }
 
-export default Movies;
+export default Series;

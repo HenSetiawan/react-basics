@@ -72,12 +72,12 @@ function RootLayout() {
                   <span className="ms-1">Movies</span>
                 </div>
               </NavLink>
-              <Nav.Link className="text-uppercase text-nav" href="#link">
+              <NavLink className="text-nav text-uppercase me-2" to="/series">
                 <div className="d-flex align-items-center">
                   <PiTelevisionBold />
                   <span className="ms-1">TvSeries</span>
                 </div>
-              </Nav.Link>
+              </NavLink>
             </Nav>
           </Navbar.Collapse>
         </Container>

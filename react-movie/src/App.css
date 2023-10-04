@@ -197,6 +197,10 @@ body {
   width: 15% !important;
 }
 
+.input-search {
+  width: 30% !important;
+}
+
 .footer {
   background: #16162e;
   width: 100%;
