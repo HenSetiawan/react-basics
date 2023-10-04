@@ -12,14 +12,17 @@ function Home() {
       <MovieList
         moviesData={homePageData.moviesOnAir.results.slice(0, 6)}
         title="Movies on Air"
+        urlViewMore="/movies"
       />
       <MovieList
         moviesData={homePageData.seriesOnAir.results.slice(0, 6)}
         title="Series on Air"
+        urlViewMore="/series"
       />
       <MovieList
         moviesData={homePageData.topRated.results.slice(0, 6)}
         title="Top Rated"
+        urlViewMore="/movies"
       />
     </div>
   );

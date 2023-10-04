@@ -1,7 +1,15 @@
 /* eslint-disable no-unused-vars */
 import { useState, useEffect } from "react";
 import MovieList from "../component/movie/MovieList";
-import { Dropdown, Container, Button, Form, InputGroup } from "react-bootstrap";
+import {
+  Dropdown,
+  Container,
+  Button,
+  Form,
+  InputGroup,
+  Row,
+  Col,
+} from "react-bootstrap";
 import ReactPaginate from "react-paginate";
 import { useSearchParams, Link } from "react-router-dom";
 function Movies() {
@@ -73,37 +81,43 @@ function Movies() {
 
   return (
     <div className="movies-container">
-      <Container className="d-flex justify-content-between">
-        <Dropdown>
-          <Dropdown.Toggle variant="light" id="dropdown-basic">
-            Filter By
-          </Dropdown.Toggle>
+      <Container>
+        <Row>
+          <Col lg={8}>
+            <Dropdown>
+              <Dropdown.Toggle variant="light" id="dropdown-basic">
+                Filter By
+              </Dropdown.Toggle>
 
-          <Dropdown.Menu>
-            {listGenre.genres?.map((genre) => (
-              <Link
-                to={`/movies?genre=${genre.name}`}
-                className="dropdown-item"
-                key={genre.id}
+              <Dropdown.Menu>
+                {listGenre.genres?.map((genre) => (
+                  <Link
+                    to={`/movies?genre=${genre.name}`}
+                    className="dropdown-item"
+                    key={genre.id}
+                  >
+                    {genre.name}
+                  </Link>
+                ))}
+              </Dropdown.Menu>
+            </Dropdown>
+          </Col>
+          <Col lg={4}>
+            <InputGroup className="mb-3 input-search">
+              <Form.Control
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="input keyword..."
+              />
+              <Button
+                onClick={() => handleSearch(searchQuery)}
+                variant="outline-secondary"
+                id="button-search"
               >
-                {genre.name}
-              </Link>
-            ))}
-          </Dropdown.Menu>
-        </Dropdown>
-        <InputGroup className="mb-3 input-search">
-          <Form.Control
-            onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="input keyword..."
-          />
-          <Button
-            onClick={() => handleSearch(searchQuery)}
-            variant="outline-secondary"
-            id="button-search"
-          >
-            Search
-          </Button>
-        </InputGroup>
+                Search
+              </Button>
+            </InputGroup>
+          </Col>
+        </Row>
       </Container>
       {listMovies.results ? (
         <MovieList

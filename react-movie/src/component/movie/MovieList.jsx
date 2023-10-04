@@ -2,13 +2,14 @@
 /* eslint-disable react/prop-types */
 import { Row, Col, Container } from "react-bootstrap";
 import MovieItem from "./MovieItem";
+import { NavLink } from "react-router-dom";
 
-function MovieList({ title, moviesData, isViewMoreDdisplay = true }) {
+function MovieList({ title, moviesData, isViewMoreDdisplay = true, urlViewMore }) {
   return (
     <Container className="mt-3 mb-5">
       <div className="title-list d-flex justify-content-space-between">
         <h6 className="text-uppercase">{title}</h6>
-        {isViewMoreDdisplay ? <a href="">View More &gt;</a> : " "}
+        {isViewMoreDdisplay ? <NavLink to={urlViewMore}>View More &gt;</NavLink> : " "}
       </div>
       <Row className="mt-3">
         {moviesData.map((movie) => {

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import MovieList from "../component/movie/MovieList";
-import { Dropdown, Container } from "react-bootstrap";
+import { Dropdown, Container, Row, Col, InputGroup, Form, Button } from "react-bootstrap";
 import ReactPaginate from "react-paginate";
 import { useSearchParams, Link } from "react-router-dom";
 function Series() {
@@ -9,6 +9,7 @@ function Series() {
   const [listSeries, setListSeries] = useState({});
   const [page, setPage] = useState(1);
   const [listGenre, setListGenre] = useState({});
+    const [searchQuery, setSearchQuery] = useState("");
 
   const [searchParams] = useSearchParams();
 
@@ -24,6 +25,18 @@ function Series() {
       return error;
     }
   };
+
+    const handleSearch = async (keyword) => {
+      try {
+        const responseSearch = await fetch(
+          `${apiUrl}/search/tv?api_key=${apiKey}&query=${keyword}&page=1`
+        );
+        const searchResults = await responseSearch.json();
+        setListSeries(searchResults);
+      } catch (error) {
+        return error;
+      }
+    };
 
   const handleReqGenre = async () => {
     try {
@@ -60,23 +73,43 @@ function Series() {
   return (
     <div className="movies-container">
       <Container>
-        <Dropdown>
-          <Dropdown.Toggle variant="light" id="dropdown-basic">
-            Filter By
-          </Dropdown.Toggle>
+        <Row>
+          <Col lg={8}>
+            {" "}
+            <Dropdown>
+              <Dropdown.Toggle variant="light" id="dropdown-basic">
+                Filter By
+              </Dropdown.Toggle>
 
-          <Dropdown.Menu>
-            {listGenre.genres?.map((genre) => (
-              <Link
-                to={`/series?genre=${genre.name}`}
-                className="dropdown-item"
-                key={genre.id}
+              <Dropdown.Menu>
+                {listGenre.genres?.map((genre) => (
+                  <Link
+                    to={`/series?genre=${genre.name}`}
+                    className="dropdown-item"
+                    key={genre.id}
+                  >
+                    {genre.name}
+                  </Link>
+                ))}
+              </Dropdown.Menu>
+            </Dropdown>
+          </Col>
+          <Col lg={4}>
+            <InputGroup className="mb-3 input-search">
+              <Form.Control
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="input keyword..."
+              />
+              <Button
+                onClick={() => handleSearch(searchQuery)}
+                variant="outline-secondary"
+                id="button-search"
               >
-                {genre.name}
-              </Link>
-            ))}
-          </Dropdown.Menu>
-        </Dropdown>
+                Search
+              </Button>
+            </InputGroup>
+          </Col>
+        </Row>
       </Container>
       {listSeries.results ? (
         <MovieList
