@@ -1,0 +1,14 @@
+.card-product {
+  height: 400px !important;
+}
+
+.product-img {
+  width: 150px !important;
+  margin: auto !important;
+  height: 200px !important;
+  object-fit: contain;
+}
+
+.product-name {
+  font-size: 14px;
+}
