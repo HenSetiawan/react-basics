@@ -1,3 +1,8 @@
+.hidden {
+  overflow: hidden;
+  height: 100vh !important;
+}
+
 .card-product {
   height: 400px !important;
 }
@@ -11,4 +16,51 @@
 
 .product-name {
   font-size: 14px;
+}
+
+.cart-container {
+  position: absolute;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+}
+
+.cart-layer {
+  position: relative;
+  background-color: black;
+  opacity: 0.5;
+  width: 60%;
+  height: 100vh;
+}
+
+.cart-content {
+  position: relative;
+  background-color: white;
+  width: 40%;
+  height: 100vh;
+}
+
+.btn-close {
+  background: none;
+  border: none;
+}
+
+.cart-item {
+  border-bottom: 1.5px rgb(226, 232, 240) solid;
+}
+
+.cart-item img {
+  width: 80px;
+}
+
+.cart-item .btn-none {
+  background: none;
+  font-size: 18px;
+  border: 1px solid rgb(226, 232, 240);
+}
+
+.cart-item h3 {
+  font-size: 20px;
 }
