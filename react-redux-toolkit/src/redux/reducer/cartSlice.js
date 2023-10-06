@@ -1,5 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { createSlice } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
+
 
 const initialState = {
   value: [],
@@ -17,7 +19,24 @@ export const cartSlice = createSlice({
         title: action.payload.title,
         count: 1,
       };
-      state.value.push(product);
+
+      let isAlreadyExist = false;
+      state.value.map((product) => {
+        if (product.id === action.payload.id) {
+          isAlreadyExist = true;
+        }
+      });
+
+      if (isAlreadyExist) {
+        state.value.map((product) => {
+          if (product.id === action.payload.id) {
+            product.count++;
+          }
+        });
+      } else {
+        toast.success("success add to cart !");
+        state.value.push(product);
+      }
     },
     incrementCountById: (state, action) => {
       state.value.map((product) => {
@@ -44,6 +63,9 @@ export const cartSlice = createSlice({
         (product) => product.id !== action.payload
       );
     },
+    deleteAll: (state) => {
+      state.value = [];
+    },
   },
 });
 
@@ -53,6 +75,7 @@ export const {
   incrementCountById,
   decrementCountById,
   deleteProductById,
+  deleteAll,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;
