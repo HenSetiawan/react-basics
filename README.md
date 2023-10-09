@@ -1,13 +1,23 @@
 # react-basics
-## re learn about react js
-1. https://react-state-notes.netlify.app
-pada sesi ini saya kembali mempelajari dasar dari react yaitu state dan component, saya mempelajari materi ini pada   kelas dicoding yaitu belajar dasar react
 
-2. https://react-router-jobs.netlify.app
-pada sesi ini saya kembali mempelajari konsep pada react router dom v6 dengan membuat web sederhana, pada sesi ini saya belajar mengenai dasar routing dan nested routing serta loader
-  
-3. https://react-movie-example.netlify.app
-pada project ini saya coba membuat web movie sederhana dengan menggunakan API dan memanfaatkan materi yang sudah saya pelajari sebelumnya, anda dapat melihat daftar film dan series serta melakukan pencarian, saya juga menambahkan pagination
+This repository contain project i use to learn react (again)
 
-4. https://store-redux-tollkit.netlify.app
-pada project ini saya mencoba untuk belajar state management menggunakan redux dan redux toolkit dengan kasus membuat cart produk
+1. [https://react-state-notes.netlify.app]  
+   **React State**  
+    learn react state with useState hooks to create simple note project  
+   <br/>
+
+2. [https://react-router-jobs.netlify.app]  
+   **React Router DOM**  
+    in this project i learn about react router dom v6 to build simple app with basic usage, nested router and useLoader  
+   <br/>
+
+3. [https://react-movie-example.netlify.app]  
+   **React Movie**  
+    simple project to show and search movie from open source API, in this project i do implement react state and react       router dom
+   <br/>
+4. [https://store-redux-tollkit.netlify.app]  
+   **React Redux Toolkit**  
+   build simple cart with redux toolkit
+   <br/>
+
