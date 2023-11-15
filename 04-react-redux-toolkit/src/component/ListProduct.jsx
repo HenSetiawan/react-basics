@@ -21,7 +21,7 @@ function ListProduct({ products }) {
                   <Card.Text className="product-name">
                     {product.title}
                   </Card.Text>
-                  <Card.Title>$ 109.95</Card.Title>
+                  <Card.Title>${product.price}</Card.Title>
                   <Button
                     className="pe-5 ps-5 mt-2"
                     variant="secondary"
