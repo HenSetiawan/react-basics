@@ -1,12 +1,11 @@
-'use client'
-import UserItem from "./UserItem"
+"use client";
+import UserItem from "./UserItem";
 import {
   Command,
   CommandGroup,
   CommandItem,
   CommandList,
   CommandSeparator,
-  CommandShortcut,
 } from "@/components/ui/command";
 
 import {
@@ -19,44 +18,71 @@ import {
 } from "lucide-react";
 
 function Sidebar() {
+  const listSideBarItem: {
+    groupTitle: string;
+    items: { title: string; icon: JSX.Element }[];
+  }[] = [
+    {
+      groupTitle: "Suggestions",
+      items: [
+        {
+          title: "Calendar",
+          icon: <Calendar className="mr-2 h-4 w-4" />,
+        },
+        {
+          title: "Search Emoji",
+          icon: <Smile className="mr-2 h-4 w-4" />,
+        },
+        {
+          title: "Calculator",
+          icon: <Calculator className="mr-2 h-4 w-4" />,
+        },
+      ],
+    },
+    {
+      groupTitle: "Settings",
+      items: [
+        {
+          title: "Profile",
+          icon: <User className="mr-2 h-4 w-4" />,
+        },
+        {
+          title: "Billing",
+          icon: <CreditCard className="mr-2 h-4 w-4" />,
+        },
+        {
+          title: "Settings",
+          icon: <Settings className="mr-2 h-4 w-4" />,
+        },
+      ],
+    },
+  ];
   return (
     <div className="flex gap-2 flex-col border-r w-[250px] min-h-screen min-w-[250px] p-2">
       <UserItem />
       <div className="grow p-2">
         <Command style={{ overflow: "visible" }}>
-          <CommandList style={{ overflow: "visible"}}>
-            <CommandGroup heading="Suggestions">
-              <CommandItem>
-                <Calendar className="mr-2 h-4 w-4" />
-                <span>Calendar</span>
-              </CommandItem>
-              <CommandItem>
-                <Smile className="mr-2 h-4 w-4" />
-                <span>Search Emoji</span>
-              </CommandItem>
-              <CommandItem>
-                <Calculator className="mr-2 h-4 w-4" />
-                <span>Calculator</span>
-              </CommandItem>
-            </CommandGroup>
-            <CommandSeparator />
-            <CommandGroup heading="Settings">
-              <CommandItem>
-                <User className="mr-2 h-4 w-4" />
-                <span>Profile</span>
-                <CommandShortcut>⌘P</CommandShortcut>
-              </CommandItem>
-              <CommandItem>
-                <CreditCard className="mr-2 h-4 w-4" />
-                <span>Billing</span>
-                <CommandShortcut>⌘B</CommandShortcut>
-              </CommandItem>
-              <CommandItem>
-                <Settings className="mr-2 h-4 w-4" />
-                <span>Settings</span>
-                <CommandShortcut>⌘S</CommandShortcut>
-              </CommandItem>
-            </CommandGroup>
+          <CommandList style={{ overflow: "visible" }}>
+            {listSideBarItem.map((sideBarItem, index) => {
+              return (
+                <>
+                  {index !== 0 ? <CommandSeparator /> : ''}
+                  <CommandGroup
+                    key={sideBarItem.groupTitle}
+                    heading={sideBarItem.groupTitle}
+                  >
+                    {sideBarItem.items.map((item) => {
+                      return (
+                        <CommandItem key={item.title}>
+                          {item.icon}
+                          <span>{item.title}</span>
+                        </CommandItem>
+                      );
+                    })}
+                  </CommandGroup>
+                </>
+              );
+            })}
           </CommandList>
         </Command>
       </div>
@@ -65,4 +91,4 @@ function Sidebar() {
   );
 }
 
-export default Sidebar
+export default Sidebar;
