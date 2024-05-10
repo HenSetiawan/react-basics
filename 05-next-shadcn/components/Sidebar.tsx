@@ -58,7 +58,7 @@ function Sidebar() {
     },
   ];
   return (
-    <div className="flex gap-2 flex-col border-r w-[250px] min-h-screen min-w-[250px] p-2">
+    <div className="fixed flex gap-2 flex-col border-r w-[250px] min-h-screen min-w-[250px] p-2">
       <UserItem />
       <div className="grow p-2">
         <Command style={{ overflow: "visible" }}>
