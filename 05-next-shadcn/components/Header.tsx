@@ -19,28 +19,16 @@ function Header() {
     id: any;
   }[] = [
     {
-      text: "notif baru nih",
+      text: "Ini adalah notif baru",
       date: "23-01-2001",
       isRead: true,
       id: 1,
     },
     {
-      text: "notif belum dibaca",
+      text: "Pesan masuk baru",
       date: "23-03-2001",
       isRead: false,
       id: 2,
-    },
-    {
-      text: "coba notif",
-      date: "23-02-2001",
-      isRead: true,
-      id: 3,
-    },
-    {
-      text: "ada notif cui",
-      date: "23-04-2001",
-      isRead: false,
-      id: 4,
     },
   ];
   return (
@@ -51,7 +39,12 @@ function Header() {
       <div className="w-1/2 flex justify-end">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="outline" className="icon">
+            <Button variant="outline" className="icon relative">
+              <span
+                className={`${
+                  notifications.find(notification => notification.isRead === false) ?  "bg-green-400" : ""
+                } w-3 h-3 rounded-full my-1 absolute -top-2 -right-2`}
+              ></span>
               <BellIcon className="w-4 h-4" />
             </Button>
           </DropdownMenuTrigger>
@@ -60,7 +53,10 @@ function Header() {
             <DropdownMenuSeparator />
             {notifications.map((notification) => {
               return (
-                <DropdownMenuItem key={notification.id} className="flex gap-2 items-start">
+                <DropdownMenuItem
+                  key={notification.id}
+                  className="flex gap-2 items-start"
+                >
                   <span
                     className={`${
                       notification.isRead ? "bg-neutral-200" : "bg-green-400"
