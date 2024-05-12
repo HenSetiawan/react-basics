@@ -21,7 +21,7 @@ export default function RootLayout({
       <body className={`${inter.className} w-full flex justify-between`}>
         <Sidebar />
         <main className="h-full w-full pl-[250px]">
-          <Header/>
+          <Header />
           <div>{children}</div>
         </main>
       </body>
