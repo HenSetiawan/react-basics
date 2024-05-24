@@ -22,3 +22,8 @@ This repository contain project i use to learn react (again)
    build simple cart with redux toolkit
    <br/>
 
+5. [https://05-react-basics.vercel.app/]  
+   **Simple React Dashboard Shadcn**  
+   try shadcn
+   <br/>
+
